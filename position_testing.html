@@ -1,0 +1,176 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position Testing</title>
+    <link rel="stylesheet" href="position_testing.css">
+</head>
+<body>
+    <h1>Position Scenarios</h1>
+    <p class="explain"><span class="blue">HTML Body</span> acts like a browser window in blue with small padding</p>
+    <p class="explain"><span class="grey">Parent</span> is a grey container with small padding and margin</p>
+    <p class="explain"><span class="red">Child0</span> is red</p>
+    <p class="explain"><span class="dashed">Child1</span> is transparent with dashed border</p>
+    <hr>
+    <h4>Parent: default, Child0: default, Child1: default</h4>
+    <div class="body">HTML Body
+        <div class="container">Parent: default
+            <div class="child0">Child 0: default</div>
+            <div class="child1">Child 1: default</div>
+        </div>
+    </div>
+    <p>Grandparents will resize according to all its children, and parents to its children</p>
+    <hr>
+    <h4>Parent: default, Child0: default top 15px, Child1: default</h4>
+    <div class="body">HTML Body
+        <div class="container">Parent: default
+            <div class="child0 move-top">Child 0: default</div>
+            <div class="child1">Child 1: default</div>
+        </div>
+    </div>
+    <p>Cannot move(top/left/bottom/right) without defined position (not static or unset)</p>
+    <hr>
+    <h4>Parent: default, Child0: relative, Child1: relative</h4>
+    <div class="body">HTML Body
+        <div class="container">Parent: default
+            <div class="child0 relative">Child0: relative</div>
+            <div class="child1 relative">Child1: relative</div>
+        </div>
+    </div>
+    <p>Relative does nothing without moving</p>
+    <hr>
+    <h4>Parent: default, Child0: relative, Child1: relative bottom 15px</h4>
+    <div class="body">HTML Body
+        <div class="container">Parent: default
+            <div class="child0 relative">Child0: relative</div>
+            <div class="child1 relative move-bottom">Child1: relative</div>
+        </div>
+    </div>
+    <p>Move from its original place (relative to its original place). Parents wont resize because the orginal place of child1 is still occupied, just not displayed</p>
+    <hr>
+    <h4>Parent: default, Child0: absolute, Child1 default:</h4>
+    <div class="body">HTML Body
+        <div class="container">Parent: default
+            <div class="child0 absolute">Child0 absolute:</div>
+            <div class="child1">Child1 default:</div>
+        </div>
+    </div>
+    <p>Absolute takes the element out of the html, but still displayed in its original place because top/left/bottom/right is not used. Absolute size equals its content. Child1 moves up because Child0 no longer exists in its original position and parents are smaller</p>
+    <hr>
+    <h4>Parent default:, Child0: relative, Child1: absolute top 15px</h4>
+    <div class="body">HTML Body
+        <div class="container">Parent: default
+            <div class="child0 relative">Child0 relative:</div>
+            <div class="child1 absolute move-top">Child1: absolute</div>
+        </div>
+    </div>
+    <p>Absolute elements are positioned relative to html body, because no parents have position defined. Note, left distance is still the same as its orginal place, because only top is adjusted</p>
+    <hr>
+    <h4>Parent: relative, Child0: absolute, Child1: absolute</h4>
+    <div class="body">HTML Body
+        <div class="container relative">Parent: relative
+            <div class="child0 absolute">Child0: absolute</div>
+            <div class="child1 absolute">Child1: absolute</div>
+        </div>
+    </div>
+    <p>Absolute children is displayed relative to the parent, because parent has defined a position, but they do not exist in their place. Child1 is on top of Child0 because Child0 does not exist. Parents' size shrink.</p>
+    <hr>
+    <h4>Parent: relative bottom 15px, Child0: relative, Child1: relative bottom 15px</h4>
+    <div class="body">HTML Body
+        <div class="container relative move-bottom">Parent: relative
+            <div class="child0 relative">Child0: relative</div>
+            <div class="child1 relative move-bottom">Child1: relative</div>
+        </div>
+    </div>
+    <p>Children are relative to the adjusted position of the parent that has position defined, not the parent's original position</p>
+    <hr>
+    <h4>Parent: absolute top 15px, Child0: absolute top 15px, Child1: relative top 15px</h4>
+    <div class="body">HTML Body
+        <div class="container absolute move-top">Parent: absolute
+            <div class="child0 absolute move-top">Child0: absolute</div>
+            <div class="child1 absolute move-top">Child1: relative</div>
+        </div>
+    </div>
+    <p>Both relative and absolute children are moving relative to parents with position defined. Note: The children are moving based on the moved position of the absolute parent not the original position of the absolute parent. Html body ignores all of them</p>
+    <hr>
+    <!-- <h4>Parent:, Child0:, Child1:</h4>
+    <div class="body">HTML Body
+        <div class="container">Parent:
+            <div class="child0">Child0:</div>
+            <div class="child1">Child1:</div>
+        </div>
+    </div>
+    <p></p>
+    <hr> -->
+    <h2>Putting all the scenarios in one example</h2>
+    <h4>Parent0: default, Child0: relative, Child1: relative top 15px, Child2: absolute, Child3: absolute bottom 15px</h4>
+    <h4>Parent1: relative, Child4: relative, Child5: relative top 15px, Child6: absolute, Child7: absolute bottom 15px</h4>
+    <h4>Parent2: relative top 15px, Child8: relative, Child9: relative top 15px, Child10: absolute, Child11: absolute bottom 15px</h4>
+    <h4>Parent3: absolute right 20%, Child12: relative, Child13: relative top 15px, Child14: absolute, Child15: absolute bottom 15px</h4>
+    <h4>Parent4: absolute bottom 15px right 20%, Child16: relative, Child17: relative top 15px, Child18: absolute, Child19: absolute bottom 15px</h4>
+    <div class="body padding">HTML Body
+        <div class="container padding">Parent0: default
+            <div class="child0 relative">Child0: relative</div>
+            <div class="child1 relative move-top">Child1: relative</div>
+            <div class="child2 absolute">Child2: absolute</div>
+            <div class="child3 absolute move-bottom">Child3: absolute</div>
+        </div>
+        <div class="container relative padding">Parent1: relative
+            <div class="child0 relative">Child4: relative</div>
+            <div class="child1 relative move-top">Child5: relative</div>
+            <div class="child2 absolute">Child6: absolute</div>
+            <div class="child3 absolute move-bottom">Child7: absolute</div>
+        </div>
+        <div class="container relative move-top padding">Parent2: relative
+            <div class="child0 relative">Child8: relative</div>
+            <div class="child1 relative move-top">Child9: relative</div>
+            <div class="child2 absolute">Child10: absolute</div>
+            <div class="child3 absolute move-bottom">Child11: absolute</div>
+        </div>
+        <div class="container absolute padding right">Parent3: absolute
+            <div class="child0 relative">Child12: relative</div>
+            <div class="child1 relative move-top">Child13: relative</div>
+            <div class="child2 absolute">Child14: absolute</div>
+            <div class="child3 absolute move-bottom">Child15: absolute</div>
+        </div>
+        <div class="container absolute move-bottom padding right">Parent4: absolute
+            <div class="child0 relative">Child16: relative</div>
+            <div class="child1 relative move-top">Child17: relative</div>
+            <div class="child2 absolute">Child18: absolute</div>
+            <div class="child3 absolute move-bottom">Child19: absolute</div>
+        </div>
+    </div>
+    <p class="align-left">- Parent3 and Parent4 are set to right 20% for better demonstration</p>
+    <p class="align-left">- Child3, which is absolute under default parent, is overlapped by Child11</p>
+    <hr>
+    <h3>Relative and Absolute</h3>
+    <ul>
+        <li>Original position is always relative to its direct closest parent</li>
+        <li>Its children will always be relative to them because they have defined position.</li>
+        <li>Its children is relative to the adjusted position of the parent, not original position of the parent</li>
+    </ul>
+    <h3>Relative</h3>
+    <ul>
+        <li>Simply adding relative will not change anything</li>
+        <li>Adjusting top/left/bottom/right will move its display relative to its original place, but its orginal place is still occupied</li>
+        <li>Simple definition: Relative to its original position</li>
+    </ul>
+    <h3>Absolute</h3>
+    <ul>
+        <li>Simply adding wont move it from its original position, but its parents and siblings will ignore its existence.</li>
+        <li>Its children will still be relative to it</li>
+        <li>The size of absolute elements equals its own content, ignoring its children's size</li>
+        <li>Adjusting top/left/bottom/right goes relative to the closest parent that has a position defined</li>
+        <li>Children are relative to the moved absolute parent, not the original position of absolute parent</li>
+        <li>Simple definition: Taking out from html, but yet relative to parents with position defined. </li>
+    </ul>
+</body>
+</html>
+
+
+
+<!--
+child0 = colored
+child1 = dashed transparent 
+-->

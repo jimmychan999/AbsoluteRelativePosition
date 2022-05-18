@@ -1,0 +1,94 @@
+h1, h2 {
+    text-align: center;
+    margin-top: 20px;
+}
+.blue {
+    background-color: aqua;
+    padding: 4px;
+}
+.grey {
+    background-color: grey;
+    padding: 4px;
+}
+.red {
+    background-color: red;
+    padding: 4px;
+
+}
+.dashed {
+    border: dashed 2px;
+    padding: 4px;
+
+}
+
+.explain {
+    text-align: end;
+    font-style: italic;
+}
+.body {
+    text-align: center;
+    position: relative;
+    background-color: aqua;
+    padding: 5px;
+}
+
+.container {
+    background-color: grey;
+    margin: 5px;
+}
+
+.child0 {
+    background-color: red;
+}
+
+.child1 {
+    border: dashed 5px;
+    background-color: rgba(0,0,0,0.0);
+}
+
+.child2 {
+    background-color: orange;
+}
+
+.child3 {
+    border: solid 3px;
+    background-color: rgba(241, 221, 33, 1);
+}
+
+.absolute {
+    position: absolute;
+}
+
+.relative {
+    position: relative;
+}
+
+p {
+    text-align: center;
+    margin: 22px;
+}
+
+
+hr {
+    border-width: 5px;
+}
+
+.move-top {
+    top: 15px;
+}
+
+.move-bottom {
+    bottom: 15px;
+}
+
+.padding {
+    padding: 10px;
+}
+
+.right {
+    right: 20%;
+}
+
+.align-left {
+    text-align: left;
+}
